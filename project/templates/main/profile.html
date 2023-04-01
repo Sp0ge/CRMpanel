@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+        <li class="list-group-item">ID: {{current_user.id}}</li>
+        <li class="list-group-item">Логин: {{current_user.login}}</li>
+        <li class="list-group-item">Имя: {{current_user.name}}</li>
+        <li class="list-group-item">Почта: {{current_user.email}}</li>
+  </ul>
+</div>
+{% endblock %}

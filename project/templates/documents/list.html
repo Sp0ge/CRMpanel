@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/user/doc/upload" method="post" enctype="multipart/form-data">
+<div class="input-group mb-3">
+  <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon03">Загрузить</button>
+  <input accept="{{extensions}}" type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload" name="file[]" multiple="">
+</div>
+</form>
+
+<form action="" method="POST">
+<div class="input-group">
+  <input name="search" type="search" class="form-control rounded" placeholder="Поиск: {{search_question}}" aria-label="Search" aria-describedby="search-addon" autocomplete="off" />
+  <button type="submit" class="btn btn-outline-primary">Найти</button>
+</div>
+</form>
+
+<ul class="list-group">
+{% for file in fileslist%}
+{% if current_user.id|string() in file.can_use|list() or current_user.id|string() == file.owner|string() %}
+  <li class="list-group-item">
+    <h5>Владелец: {{UU.query.get(file.owner).name}}</h5>
+    <br>
+    <h3>{{file.name}}</h3>
+    <br>
+    <br>
+    <a style="margin-left: auto;" class="btn btn-danger" role="button" href="/user/doc/download?file={{file.id}}">Скачать</a>
+    {%if current_user.id|string() == file.owner%}
+    <a style="margin-left:auto;" class="btn btn-danger" role="button" href="/user/doc/remove?file={{file.id}}">Удалить</a>
+    <a style="margin-left:auto;" class="btn btn-primary" role="button" href="/user/doc/access_settings?file={{file.id}}">Доступ</a>
+    {%endif%}
+  </li>
+{%endif%}
+{%endfor%}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="user/doc/list">
+  <button class="btn btn-primary" type="button" aria-expanded="false">
+    Документы
+  </button>
+</a>
+
+
+{% if current_user.privilege == "root" %}
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Функции Администратора
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/admin/user_edit">Управление пользователями</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="/admin/privileges_edit">Управление Привилегиями</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="/admin/users_rules">Разрешения пользователей</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="/admin/data_pools">Pools</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="/admin/ssl_edit">SSL</a></li>
+  </ul>
+</div>
+{% endif %}
+
+{% endblock %}

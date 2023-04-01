@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    {% for file in ssl_files %}
+    <li>{{file}}</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('admin.ssl_factory') }}"><button>Сброс Сертификатов к заводским.</button></a>
+<form method="post" action="/admin/ssl_edit" enctype="multipart/form-data">
+     <label>Корневой Сертификат (.crt)</label>
+    <br>
+    <input required accept=".crt" type="file" name="ssl_cert">
+    <br>
+    <br>
+    <label>Ключ (.key)</label>
+    <br>
+    <input required accept=".key" type="file" name="ssl_key">
+    <br>
+    <br>
+   <button>Submit</button>
+</form>
+{% endblock %}

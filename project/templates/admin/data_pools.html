@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul class="list-group list-group-flush">
+    {%for pool in pools %}
+        <li class="list-group-item">
+            <h5>{{pool.pool_name}}</h5>
+            <form method="POST" action="/admin/data_pools/{{pool.id}}">
+                <input required class="input is-large" type="text" name="users_directory" value="{{pool.path}}">
+            </form>
+        </li>
+    {%endfor%}
+</ul>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {{ ckeditor.load(custom_url=url_for('static', filename='ckeditor/ckeditor.js'),pkg_type="full") }}
+{% endblock %}

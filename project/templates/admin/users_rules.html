@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <h5>Разрешённые расширения файлов.</h5>
+            <h6>(через пробел)</h6>
+            <form method="POST" action="/admin/rule/{{allowed_exten.id}}">
+                <input required class="input is-large" type="text" name="extensions" value="{{allowed_exten.rule}}">
+            </form>
+        </li>
+</ul>
+{% endblock %}

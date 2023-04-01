@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/admin/user_add"><button type="button" class="btn btn-info">Добавить пользователя</button></a>
+<ul class="list-group list-group-flush">
+    {%for user in users%}
+        <li class="list-group-item">
+            <h5>id: {{user.id}}</h5>
+            <h5>login: {{user.login}} </h5>
+            <h5>email: {{user.email}}</h5>
+            <h5>name: {{user.name}} </h5>
+
+             <h5>privilege: {{user.privilege}}</h5>
+
+            <form method="POST" action="/admin/user_edit">
+                <input type="hidden" name="user_id" value="{{user.id}}">
+                <button>Удалить</button>
+            </form>
+
+            <a href="/admin/user_edit_info/{{user.id}}"><button type="button" class="btn btn-info">Изменить</button></a>
+
+        </li>
+    {%endfor%}
+</ul>
+{% endblock %}

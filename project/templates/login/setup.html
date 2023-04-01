@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style/css/login/setup.css') }}">
+<form method="POST" action="/setup">
+            <h1 class="title">Setup</h1>
+                <div class="mb-3">
+                <input required class="form-control form-control-lg" type="email" name="email" placeholder="Почта" autofocus="">
+                </div>
+
+                <div class="mb-3">
+                <input required class="form-control form-control-lg" type="text" name="name" placeholder="Имя">
+                </div>
+
+                <div class="mb-3">
+                <input required class="form-control form-control-lg" type="text" name="login" placeholder="Логин">
+                </div>
+
+                <div class="mb-3">
+                <input required class="form-control form-control-lg" type="password" name="password" placeholder="Ваш пароль">
+                </div>
+
+                <div class="mb-3">
+                <input required class="form-control form-control-lg" type="password" name="password_check" placeholder="Повторите пароль">
+                </div>
+
+                <div class="mb-3">
+                <label>Папка для данных и файлов пользователей.</label>
+                <input required class="form-control form-control-lg" type="text" name="users_directory" placeholder="Путь до папки">
+
+                <div class="mb-3">
+                <label>Разрешённые к загрузке типы файлов.</label>
+                <input required class="form-control form-control-lg" type="text" name="extensions" placeholder="PPTX XLSX DOCX">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit">Продолжить</button>
+                </div>
+        </form>
+{% endblock %}
